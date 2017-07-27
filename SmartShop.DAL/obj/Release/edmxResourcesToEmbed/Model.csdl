@@ -1,0 +1,1478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SmartShopModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SmartShopEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Advertisements" EntityType="SmartShopModel.Advertisement" />
+    <EntitySet Name="Albums" EntityType="SmartShopModel.Album" />
+    <EntitySet Name="Articals" EntityType="SmartShopModel.Artical" />
+    <EntitySet Name="ArticalCategories" EntityType="SmartShopModel.ArticalCategory" />
+    <EntitySet Name="Categories" EntityType="SmartShopModel.Category" />
+    <EntitySet Name="Colors" EntityType="SmartShopModel.Color" />
+    <EntitySet Name="Comments" EntityType="SmartShopModel.Comment" />
+    <EntitySet Name="HT_THONG_TIN" EntityType="SmartShopModel.HT_THONG_TIN" />
+    <EntitySet Name="Images" EntityType="SmartShopModel.Image" />
+    <EntitySet Name="Inventories" EntityType="SmartShopModel.Inventory" />
+    <EntitySet Name="InventoryDetails" EntityType="SmartShopModel.InventoryDetail" />
+    <EntitySet Name="InventoryPeriods" EntityType="SmartShopModel.InventoryPeriod" />
+    <EntitySet Name="Members" EntityType="SmartShopModel.Member" />
+    <EntitySet Name="MemberGroups" EntityType="SmartShopModel.MemberGroup" />
+    <EntitySet Name="Products" EntityType="SmartShopModel.Product" />
+    <EntitySet Name="ProductDesigns" EntityType="SmartShopModel.ProductDesign" />
+    <EntitySet Name="ProductGroups" EntityType="SmartShopModel.ProductGroup" />
+    <EntitySet Name="ProductMaterials" EntityType="SmartShopModel.ProductMaterial" />
+    <EntitySet Name="ProductSets" EntityType="SmartShopModel.ProductSet" />
+    <EntitySet Name="ProductSizes" EntityType="SmartShopModel.ProductSize" />
+    <EntitySet Name="ProductStyles" EntityType="SmartShopModel.ProductStyle" />
+    <EntitySet Name="ProductTypes" EntityType="SmartShopModel.ProductType" />
+    <EntitySet Name="Providers" EntityType="SmartShopModel.Provider" />
+    <EntitySet Name="ShoppingOrders" EntityType="SmartShopModel.ShoppingOrder" />
+    <EntitySet Name="ShoppingOrderDetails" EntityType="SmartShopModel.ShoppingOrderDetail" />
+    <EntitySet Name="SP_SAN_PHAM_TTINH" EntityType="SmartShopModel.SP_SAN_PHAM_TTINH" />
+    <EntitySet Name="SP_TTINH_GTRI" EntityType="SmartShopModel.SP_TTINH_GTRI" />
+    <EntitySet Name="SP_TTINH_LOAI" EntityType="SmartShopModel.SP_TTINH_LOAI" />
+    <EntitySet Name="StockOrders" EntityType="SmartShopModel.StockOrder" />
+    <EntitySet Name="StockOrderDetails" EntityType="SmartShopModel.StockOrderDetail" />
+    <EntitySet Name="SYS_MENU" EntityType="SmartShopModel.SYS_MENU" />
+    <EntitySet Name="SYS_VERSION" EntityType="SmartShopModel.SYS_VERSION" />
+    <EntitySet Name="sysdiagrams" EntityType="SmartShopModel.sysdiagram" />
+    <EntitySet Name="WebInfoes" EntityType="SmartShopModel.WebInfo" />
+    <EntitySet Name="vwAdv_Category" EntityType="SmartShopModel.vwAdv_Category" />
+    <EntitySet Name="vwArticals" EntityType="SmartShopModel.vwArtical" />
+    <EntitySet Name="vwComments" EntityType="SmartShopModel.vwComment" />
+    <EntitySet Name="vwProducts" EntityType="SmartShopModel.vwProduct" />
+    <EntitySet Name="vwProduct_Img" EntityType="SmartShopModel.vwProduct_Img" />
+    <EntitySet Name="vwProductSet_Product" EntityType="SmartShopModel.vwProductSet_Product" />
+    <EntitySet Name="vwProductSetAllNames" EntityType="SmartShopModel.vwProductSetAllName" />
+    <EntitySet Name="vwShoppingOrder_Member" EntityType="SmartShopModel.vwShoppingOrder_Member" />
+    <EntitySet Name="vwShoppingOrderDetails" EntityType="SmartShopModel.vwShoppingOrderDetail" />
+    <AssociationSet Name="FK_Image_Album" Association="SmartShopModel.FK_Image_Album">
+      <End Role="Album" EntitySet="Albums" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inventory_InventoryPeriod" Association="SmartShopModel.FK_Inventory_InventoryPeriod">
+      <End Role="InventoryPeriod" EntitySet="InventoryPeriods" />
+      <End Role="Inventory" EntitySet="Inventories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InventoryDetail_Inventory" Association="SmartShopModel.FK_InventoryDetail_Inventory">
+      <End Role="Inventory" EntitySet="Inventories" />
+      <End Role="InventoryDetail" EntitySet="InventoryDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShoppingOrderDetail_ShoppingOrder" Association="SmartShopModel.FK_ShoppingOrderDetail_ShoppingOrder">
+      <End Role="ShoppingOrder" EntitySet="ShoppingOrders" />
+      <End Role="ShoppingOrderDetail" EntitySet="ShoppingOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StockOrderDetail_StockOrder" Association="SmartShopModel.FK_StockOrderDetail_StockOrder">
+      <End Role="StockOrder" EntitySet="StockOrders" />
+      <End Role="StockOrderDetail" EntitySet="StockOrderDetails" />
+    </AssociationSet>
+    <FunctionImport Name="T_AccessMember_UserName" ReturnType="Collection(SmartShopModel.T_AccessMember_UserName_Result)" IsComposable="true">
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="T_AccessMemberby_UserName" ReturnType="Collection(SmartShopModel.T_AccessMemberby_UserName_Result)" IsComposable="true">
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="P_Comment_SearchPaging" EntitySet="Comments" ReturnType="Collection(SmartShopModel.Comment)">
+      <Parameter Name="ProductSetID" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_Member_SearchPaging">
+      <Parameter Name="usernam" Mode="In" Type="String" />
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_Member_UserName_MemberGroupID_SearchPaging" EntitySet="Members" ReturnType="Collection(SmartShopModel.Member)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="MemberGroupID" Mode="In" Type="Int32" />
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_vwArtical_SearchPaging" EntitySet="vwArticals" ReturnType="Collection(SmartShopModel.vwArtical)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="ArticalCatID" Mode="In" Type="Int32" />
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_vwComment_SearchPaging" EntitySet="vwComments" ReturnType="Collection(SmartShopModel.vwComment)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="Type" Mode="In" Type="Int32" />
+      <Parameter Name="AdminView" Mode="In" Type="Int32" />
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_vwProduct_SearchPaging" EntitySet="vwProducts" ReturnType="Collection(SmartShopModel.vwProduct)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="ProductGroupID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductSetID" Mode="In" Type="Int32" />
+      <Parameter Name="SizeID" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_vwProductSet_FindSort" EntitySet="vwProductSetAllNames" ReturnType="Collection(SmartShopModel.vwProductSetAllName)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="ProductGroupID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductStyleID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductMaterialID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductDesignID" Mode="In" Type="Int32" />
+      <Parameter Name="ProviderID" Mode="In" Type="Int32" />
+      <Parameter Name="PriceFrom" Mode="In" Type="Double" />
+      <Parameter Name="PriceTo" Mode="In" Type="Double" />
+      <Parameter Name="ShortBy" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_vwProductSet_FindSort_NotPaging" EntitySet="vwProductSetAllNames" ReturnType="Collection(SmartShopModel.vwProductSetAllName)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="ProductGroupID" Mode="In" Type="Int32" />
+      <Parameter Name="ProviderID" Mode="In" Type="Int32" />
+      <Parameter Name="ShortBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_vwProductSet_FindSort_PriceBeetwen" EntitySet="vwProductSetAllNames" ReturnType="Collection(SmartShopModel.vwProductSetAllName)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="ProductGroupID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductStyleID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductMaterialID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductDesignID" Mode="In" Type="Int32" />
+      <Parameter Name="ProviderID" Mode="In" Type="Int32" />
+      <Parameter Name="PriceFrom" Mode="In" Type="Double" />
+      <Parameter Name="PriceTo" Mode="In" Type="Double" />
+      <Parameter Name="ShortBy" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_vwProductSet_FindSort_PriceDown" EntitySet="vwProductSetAllNames" ReturnType="Collection(SmartShopModel.vwProductSetAllName)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="ProductGroupID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductStyleID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductMaterialID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductDesignID" Mode="In" Type="Int32" />
+      <Parameter Name="ProviderID" Mode="In" Type="Int32" />
+      <Parameter Name="PriceFrom" Mode="In" Type="Double" />
+      <Parameter Name="PriceTo" Mode="In" Type="Double" />
+      <Parameter Name="ShortBy" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_vwProductSet_FindSort_PriceUp" EntitySet="vwProductSetAllNames" ReturnType="Collection(SmartShopModel.vwProductSetAllName)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="ProductGroupID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductStyleID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductMaterialID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductDesignID" Mode="In" Type="Int32" />
+      <Parameter Name="ProviderID" Mode="In" Type="Int32" />
+      <Parameter Name="PriceFrom" Mode="In" Type="Double" />
+      <Parameter Name="PriceTo" Mode="In" Type="Double" />
+      <Parameter Name="ShortBy" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_vwProductSetAllName_SearchPaging" EntitySet="vwProductSetAllNames" ReturnType="Collection(SmartShopModel.vwProductSetAllName)">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="CategoryID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductGroupID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductStyleID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductMaterialID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="Pocket" Mode="In" Type="Int32" />
+      <Parameter Name="ProviderID" Mode="In" Type="Int32" />
+      <Parameter Name="ForGender" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_vwShoppingOrder_Member_SearchPaging" EntitySet="vwShoppingOrder_Member" ReturnType="Collection(SmartShopModel.vwShoppingOrder_Member)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="MemberID" Mode="In" Type="Int32" />
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="OrderInDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="P_vwShoppingOrder_User_SearchPaging" EntitySet="vwShoppingOrder_Member" ReturnType="Collection(SmartShopModel.vwShoppingOrder_Member)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SmartShopModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SmartShopModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Select_SanPham">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="groupId" Mode="In" Type="String" />
+      <Parameter Name="orderField" Mode="In" Type="String" />
+      <Parameter Name="orderType" Mode="In" Type="String" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimKiem_SanPham">
+      <Parameter Name="KeyWord" Mode="In" Type="String" />
+      <Parameter Name="groupId" Mode="In" Type="String" />
+      <Parameter Name="orderField" Mode="In" Type="String" />
+      <Parameter Name="orderType" Mode="In" Type="String" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TTINH_SPHAM" ReturnType="Collection(SmartShopModel.sp_TTINH_SPHAM_Result)" />
+    <FunctionImport Name="sp_TTINH_SPHAM_THUONGHIEU" ReturnType="Collection(String)">
+      <Parameter Name="CatID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spCategory_Paging" ReturnType="Collection(SmartShopModel.spCategory_Paging_Result)">
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spCategory_Search_Paging" ReturnType="Collection(SmartShopModel.spCategory_Search_Paging_Result)">
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spColor_Paging" ReturnType="Collection(SmartShopModel.spColor_Paging_Result)">
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spProductDesign_Paging" ReturnType="Collection(SmartShopModel.spProductDesign_Paging_Result)">
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spProductGroup_Paging" ReturnType="Collection(SmartShopModel.spProductGroup_Paging_Result)">
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spProductMaterial_Paging" ReturnType="Collection(SmartShopModel.spProductMaterial_Paging_Result)">
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spProductSize_Paging" ReturnType="Collection(SmartShopModel.spProductSize_Paging_Result)">
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spProductStyle_Paging" ReturnType="Collection(SmartShopModel.spProductStyle_Paging_Result)">
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spProductType_Paging" ReturnType="Collection(SmartShopModel.spProductType_Paging_Result)">
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spProvider_Paging" ReturnType="Collection(SmartShopModel.spProvider_Paging_Result)">
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentPage" Mode="In" Type="Int32" />
+      <Parameter Name="TotalRecord" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="T_AccessMember_UserName_Result">
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="MemberGroupID" Type="Int32" Nullable="false" />
+    <Property Name="AcountLogin" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="AcountPass" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="TrueName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="DateOfBirth" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ManageBy" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="AcountBank" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BranchOfBank" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Note" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Acitve" Type="Boolean" />
+  </ComplexType>
+  <ComplexType Name="T_AccessMemberby_UserName_Result">
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="MemberGroupID" Type="Int32" Nullable="false" />
+    <Property Name="AcountLogin" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="AcountPass" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="TrueName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="DateOfBirth" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ManageBy" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="AcountBank" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BranchOfBank" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Note" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Acitve" Type="Boolean" />
+  </ComplexType>
+  <EntityType Name="Advertisement">
+    <Key>
+      <PropertyRef Name="AdvertisementID" />
+    </Key>
+    <Property Name="AdvertisementID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="Orders" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Position" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Link" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Album">
+    <Key>
+      <PropertyRef Name="AlbumID" />
+    </Key>
+    <Property Name="AlbumID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="MasterImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ResizeImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Member" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="PublishDate" Type="DateTime" Precision="3" />
+    <Property Name="Viewed" Type="Int32" Nullable="false" />
+    <Property Name="Tag" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Images" Relationship="SmartShopModel.FK_Image_Album" FromRole="Album" ToRole="Image" />
+  </EntityType>
+  <EntityType Name="Artical">
+    <Key>
+      <PropertyRef Name="ArticalID" />
+    </Key>
+    <Property Name="ArticalID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ArticalCatID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Summery" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ArticalContent" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="MasterImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ResizeImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Member" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="PublishDate" Type="DateTime" Precision="3" />
+    <Property Name="Viewed" Type="Int32" Nullable="false" />
+    <Property Name="Tag" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="IsFix" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ArticalCategory">
+    <Key>
+      <PropertyRef Name="ArticalCatID" />
+    </Key>
+    <Property Name="ArticalCatID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ArticalCatName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Order" Type="Int32" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="IsFix" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ParrentID" Type="Int32" />
+    <Property Name="CategoryName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="NoSymbolName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="ColorID" />
+    </Key>
+    <Property Name="ColorID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="ColorName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ColorIcon" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Parent" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Content" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ComentBy" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="ProductSetID" Type="Int32" />
+    <Property Name="Viewed" Type="Int32" />
+    <Property Name="AdminView" Type="Int32" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HT_THONG_TIN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupInfo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Info" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Value" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <Property Name="Des" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <Property Name="Available" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="AlbumID" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="MasterImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ResizeImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Member" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="PublishDate" Type="DateTime" Precision="3" />
+    <Property Name="Viewed" Type="Int32" Nullable="false" />
+    <Property Name="Tag" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Selected" Type="Boolean" />
+    <NavigationProperty Name="Album" Relationship="SmartShopModel.FK_Image_Album" FromRole="Image" ToRole="Album" />
+  </EntityType>
+  <EntityType Name="Inventory">
+    <Key>
+      <PropertyRef Name="InventoryID" />
+    </Key>
+    <Property Name="InventoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="InventoryCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="PeriodID" Type="Int32" Nullable="false" />
+    <Property Name="InventoryDate" Type="DateTime" Precision="3" />
+    <Property Name="InventoryBy" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="InventoryPeriod" Relationship="SmartShopModel.FK_Inventory_InventoryPeriod" FromRole="Inventory" ToRole="InventoryPeriod" />
+    <NavigationProperty Name="InventoryDetails" Relationship="SmartShopModel.FK_InventoryDetail_Inventory" FromRole="Inventory" ToRole="InventoryDetail" />
+  </EntityType>
+  <EntityType Name="InventoryDetail">
+    <Key>
+      <PropertyRef Name="InventoryDetailID" />
+    </Key>
+    <Property Name="InventoryDetailID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="InventoryID" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Quantity" Type="Double" />
+    <NavigationProperty Name="Inventory" Relationship="SmartShopModel.FK_InventoryDetail_Inventory" FromRole="InventoryDetail" ToRole="Inventory" />
+  </EntityType>
+  <EntityType Name="InventoryPeriod">
+    <Key>
+      <PropertyRef Name="PeriodID" />
+    </Key>
+    <Property Name="PeriodID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="PeriodName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="BeginDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Inventories" Relationship="SmartShopModel.FK_Inventory_InventoryPeriod" FromRole="InventoryPeriod" ToRole="Inventory" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberGroupID" Type="Int32" Nullable="false" />
+    <Property Name="AcountLogin" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="AcountPass" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="TrueName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="DateOfBirth" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ManageBy" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="AcountBank" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BranchOfBank" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Note" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Acitve" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="MemberGroup">
+    <Key>
+      <PropertyRef Name="MemberGroupID" />
+    </Key>
+    <Property Name="MemberGroupID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ProductName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="NoSymbolName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ProductSetID" Type="Int32" />
+    <Property Name="ProductGroupID" Type="Int32" />
+    <Property Name="Quantity" Type="Double" />
+    <Property Name="SizeID" Type="Int32" />
+    <Property Name="Viewed" Type="Int32" Nullable="false" />
+    <Property Name="Available" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProductDesign">
+    <Key>
+      <PropertyRef Name="ProductDesignID" />
+    </Key>
+    <Property Name="ProductDesignID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductDesignName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ProductGroup">
+    <Key>
+      <PropertyRef Name="ProductGroupID" />
+    </Key>
+    <Property Name="ProductGroupID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupParrentID" Type="Int32" />
+    <Property Name="GroupName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="NoSymbolName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ProductMaterial">
+    <Key>
+      <PropertyRef Name="ProductMaterialID" />
+    </Key>
+    <Property Name="ProductMaterialID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MaterialName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="Desciption" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ProductSet">
+    <Key>
+      <PropertyRef Name="ProductSetID" />
+    </Key>
+    <Property Name="ProductSetID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductSetCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ProductSetName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="ProductGroupID" Type="Int32" />
+    <Property Name="ProductStyleID" Type="Int32" />
+    <Property Name="ProductMaterialID" Type="Int32" />
+    <Property Name="ProductDesignID" Type="Int32" />
+    <Property Name="ProductTypeID" Type="Int32" />
+    <Property Name="Pocket" Type="Int32" Nullable="false" />
+    <Property Name="ProviderID" Type="Int32" />
+    <Property Name="ForGender" Type="Int32" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="PriceSaled" Type="Double" />
+    <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductUnit" Type="Int32" />
+    <Property Name="ColorID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProductSize">
+    <Key>
+      <PropertyRef Name="SizeID" />
+    </Key>
+    <Property Name="SizeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ProductStyle">
+    <Key>
+      <PropertyRef Name="ProductStyleID" />
+    </Key>
+    <Property Name="ProductStyleID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="StyleName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="ProductTypeID" />
+    </Key>
+    <Property Name="ProductTypeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Provider">
+    <Key>
+      <PropertyRef Name="ProviderID" />
+    </Key>
+    <Property Name="ProviderID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProviderName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Logo" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ShoppingOrder">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberID" Type="Int32" />
+    <Property Name="OrderCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="RequiredDate" Type="DateTime" Precision="3" />
+    <Property Name="ShippedDate" Type="DateTime" Precision="3" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="ShipAddress" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+    <Property Name="ShipCity" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="ShipCountry" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="ShoppingOrderDetails" Relationship="SmartShopModel.FK_ShoppingOrderDetail_ShoppingOrder" FromRole="ShoppingOrder" ToRole="ShoppingOrderDetail" />
+  </EntityType>
+  <EntityType Name="ShoppingOrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Discount" Type="Double" />
+    <NavigationProperty Name="ShoppingOrder" Relationship="SmartShopModel.FK_ShoppingOrderDetail_ShoppingOrder" FromRole="ShoppingOrderDetail" ToRole="ShoppingOrder" />
+  </EntityType>
+  <EntityType Name="SP_SAN_PHAM_TTINH">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_SAN_PHAM" Type="Int32" Nullable="false" />
+    <Property Name="MA_SAN_PHAM" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="MA_TTINH" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="GIA_TRI" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SP_TTINH_GTRI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_TTINH_LOAI" Type="Int32" Nullable="false" />
+    <Property Name="MA_TTINH_LOAI" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="MA_TTINH" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="TEN_TTINH" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SP_TTINH_LOAI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MA_TTINH_LOAI" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="TEN_TTINH_LOAI" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="StockOrder">
+    <Key>
+      <PropertyRef Name="StockOrderID" />
+    </Key>
+    <Property Name="StockOrderID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="StockOrderCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="StockOrderType" Type="Int32" />
+    <Property Name="EffectType" Type="Boolean" Nullable="false" />
+    <Property Name="ShoppingOrderID" Type="Int32" />
+    <Property Name="PeriodID" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Deliverer" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Receiver" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+    <Property Name="Department" Type="Int32" />
+    <NavigationProperty Name="StockOrderDetails" Relationship="SmartShopModel.FK_StockOrderDetail_StockOrder" FromRole="StockOrder" ToRole="StockOrderDetail" />
+  </EntityType>
+  <EntityType Name="StockOrderDetail">
+    <Key>
+      <PropertyRef Name="StockOrderDetailID" />
+    </Key>
+    <Property Name="StockOrderDetailID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="StockOrderID" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Quantity" Type="Double" />
+    <Property Name="Reason" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="StockOrder" Relationship="SmartShopModel.FK_StockOrderDetail_StockOrder" FromRole="StockOrderDetail" ToRole="StockOrder" />
+  </EntityType>
+  <EntityType Name="SYS_MENU">
+    <Key>
+      <PropertyRef Name="MENU_ID" />
+    </Key>
+    <Property Name="MENU_ID" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="MENU_NAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="MENU_NAME_EN" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="MENU_TYPE" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+    <Property Name="DISPLAY_SEQ" Type="Int32" Nullable="false" />
+    <Property Name="ICON_SEQ" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CONTROLER_NAME" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ACTION_NAME" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="PARAMETER_NAMES" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="PARAMETER_VALUES" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="PARENT_ID" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="REC_STATUS" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="INPUTTER" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="INPUT_DATE" Type="String" MaxLength="14" Unicode="false" FixedLength="false" />
+    <Property Name="AUTHORISER" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="AUTH_DATE" Type="String" MaxLength="14" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SYS_VERSION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="LOAI" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PHIEN_BAN" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="MO_TA" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="WebInfo">
+    <Key>
+      <PropertyRef Name="InforID" />
+    </Key>
+    <Property Name="InforID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="NameLiveChat1" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="YahooLiveChat1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="PhoneLiveChat1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="NameLiveChat2" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="YahooLiveChat2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="PhoneLiveChat2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="HotLine1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="HotLine2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="NameSupport1" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="YahooSupport1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="PhoneSupport1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="NameSupport2" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="YahooSupport2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="PhoneSupport2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SupportSale_Comp" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="SupportSale_Address" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="SupportSale_Email" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="SupportSale_Web" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="SupportSale_Phone1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SupportSale_Phone2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Bank_AcountName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Bank1_Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Bank1_BranchName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Bank1_Acount" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Bank1_Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Bank2_Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Bank2_BranchName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Bank2_Acount" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Bank2_Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Bank3_Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Bank3_BranchName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Bank3_Acount" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Bank3_Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="TwitterLink" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="FacebookLink" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="GooglePlusLink" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="YouTubeLink" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="vwAdv_Category">
+    <Key>
+      <PropertyRef Name="AdvertisementID" />
+      <PropertyRef Name="Position" />
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="AdvertisementID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="Orders" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Position" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="Link" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="vwArtical">
+    <Key>
+      <PropertyRef Name="ArticalID" />
+      <PropertyRef Name="ArticalCatID" />
+      <PropertyRef Name="Viewed" />
+      <PropertyRef Name="Active" />
+    </Key>
+    <Property Name="ArticalID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ArticalCatID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ArticalContent" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="MasterImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ResizeImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Member" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="PublishDate" Type="DateTime" Precision="3" />
+    <Property Name="Viewed" Type="Int32" Nullable="false" />
+    <Property Name="Tag" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="ArticalCatName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Summery" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="IsFix" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="vwComment">
+    <Key>
+      <PropertyRef Name="CommentID" />
+      <PropertyRef Name="Active" />
+    </Key>
+    <Property Name="CommentID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Parent" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Content" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ComentBy" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="ProductSetID" Type="Int32" />
+    <Property Name="Viewed" Type="Int32" />
+    <Property Name="AdminView" Type="Int32" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="ProductSetCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ProductSetName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="vwProduct">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="Viewed" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ProductName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ProductSetID" Type="Int32" />
+    <Property Name="Quantity" Type="Double" />
+    <Property Name="SizeID" Type="Int32" />
+    <Property Name="ProductSetName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SizeName" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="ProductGroupID" Type="Int32" />
+    <Property Name="GroupName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Viewed" Type="Int32" Nullable="false" />
+    <Property Name="Available" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vwProduct_Img">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ProductCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ProductName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ProductSetID" Type="Int32" />
+    <Property Name="Quantity" Type="Double" />
+    <Property Name="SizeID" Type="Int32" />
+    <Property Name="ResizeImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="MasterImage" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="vwProductSet_Product">
+    <Key>
+      <PropertyRef Name="ProductSetID" />
+      <PropertyRef Name="CategoryID" />
+      <PropertyRef Name="Pocket" />
+      <PropertyRef Name="DeliveryDate" />
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="Viewed" />
+    </Key>
+    <Property Name="ProductSetID" Type="Int32" Nullable="false" />
+    <Property Name="ProductSetCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ProductSetName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="ProductGroupID" Type="Int32" />
+    <Property Name="ProductStyleID" Type="Int32" />
+    <Property Name="ProductMaterialID" Type="Int32" />
+    <Property Name="ProductTypeID" Type="Int32" />
+    <Property Name="Pocket" Type="Int32" Nullable="false" />
+    <Property Name="ProviderID" Type="Int32" />
+    <Property Name="ForGender" Type="Int32" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="PriceSaled" Type="Double" />
+    <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Double" />
+    <Property Name="ProductUnit" Type="Int32" />
+    <Property Name="ProductCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ProductName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductDesignID" Type="Int32" />
+    <Property Name="Viewed" Type="Int32" Nullable="false" />
+    <Property Name="Available" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vwProductSetAllName">
+    <Key>
+      <PropertyRef Name="ProductSetID" />
+      <PropertyRef Name="CategoryID" />
+      <PropertyRef Name="Pocket" />
+      <PropertyRef Name="DeliveryDate" />
+    </Key>
+    <Property Name="ProductSetID" Type="Int32" Nullable="false" />
+    <Property Name="ProductSetCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ProductSetName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ProductGroupName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ProductStyleName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ProductMaterialName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ProductTypeName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ProviderName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ForGenderName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ProductGroupID" Type="Int32" />
+    <Property Name="ProductStyleID" Type="Int32" />
+    <Property Name="ProductMaterialID" Type="Int32" />
+    <Property Name="ProductTypeID" Type="Int32" />
+    <Property Name="Pocket" Type="Int32" Nullable="false" />
+    <Property Name="ProviderID" Type="Int32" />
+    <Property Name="ForGender" Type="Int32" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="PriceSaled" Type="Double" />
+    <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ProductUnit" Type="Int32" />
+    <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ColorID" Type="Int32" />
+    <Property Name="ColorName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ProductDesignID" Type="Int32" />
+    <Property Name="ProductDesignName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="vwShoppingOrder_Member">
+    <Key>
+      <PropertyRef Name="MemberID" />
+      <PropertyRef Name="MemberGroupID" />
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="MemberGroupID" Type="Int32" Nullable="false" />
+    <Property Name="AcountLogin" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="OrderCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="RequiredDate" Type="DateTime" Precision="3" />
+    <Property Name="ShippedDate" Type="DateTime" Precision="3" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="ShipAddress" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+    <Property Name="ShipCity" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="ShipCountry" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="ManageBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vwShoppingOrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Discount" Type="Double" />
+    <Property Name="ProductSetName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ChietKhau" Type="Double" />
+  </EntityType>
+  <Association Name="FK_Image_Album">
+    <End Role="Album" Type="SmartShopModel.Album" Multiplicity="0..1" />
+    <End Role="Image" Type="SmartShopModel.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="AlbumID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="AlbumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inventory_InventoryPeriod">
+    <End Role="InventoryPeriod" Type="SmartShopModel.InventoryPeriod" Multiplicity="1" />
+    <End Role="Inventory" Type="SmartShopModel.Inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InventoryPeriod">
+        <PropertyRef Name="PeriodID" />
+      </Principal>
+      <Dependent Role="Inventory">
+        <PropertyRef Name="PeriodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InventoryDetail_Inventory">
+    <End Role="Inventory" Type="SmartShopModel.Inventory" Multiplicity="0..1" />
+    <End Role="InventoryDetail" Type="SmartShopModel.InventoryDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventory">
+        <PropertyRef Name="InventoryID" />
+      </Principal>
+      <Dependent Role="InventoryDetail">
+        <PropertyRef Name="InventoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShoppingOrderDetail_ShoppingOrder">
+    <End Role="ShoppingOrder" Type="SmartShopModel.ShoppingOrder" Multiplicity="0..1" />
+    <End Role="ShoppingOrderDetail" Type="SmartShopModel.ShoppingOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShoppingOrder">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="ShoppingOrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StockOrderDetail_StockOrder">
+    <End Role="StockOrder" Type="SmartShopModel.StockOrder" Multiplicity="0..1" />
+    <End Role="StockOrderDetail" Type="SmartShopModel.StockOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StockOrder">
+        <PropertyRef Name="StockOrderID" />
+      </Principal>
+      <Dependent Role="StockOrderDetail">
+        <PropertyRef Name="StockOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="P_Comment_SearchPaging_Result">
+    <Property Type="Int32" Name="CommentID" Nullable="false" />
+    <Property Type="Int32" Name="Parent" Nullable="true" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Content" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="ComentBy" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="150" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Type" Nullable="true" />
+    <Property Type="Int32" Name="ProductSetID" Nullable="true" />
+    <Property Type="Int32" Name="Viewed" Nullable="true" />
+    <Property Type="Int32" Name="AdminView" Nullable="true" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="P_Member_UserName_MemberGroupID_SearchPaging_Result">
+    <Property Type="Int32" Name="MemberID" Nullable="false" />
+    <Property Type="Int32" Name="MemberGroupID" Nullable="false" />
+    <Property Type="String" Name="AcountLogin" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="AcountPass" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="TrueName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="DateOfBirth" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ManageBy" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="AcountBank" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BranchOfBank" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Note" Nullable="true" MaxLength="255" />
+    <Property Type="Boolean" Name="Acitve" Nullable="true" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="P_vwArtical_SearchPaging_Result">
+    <Property Type="Int32" Name="ArticalID" Nullable="false" />
+    <Property Type="Int32" Name="ArticalCatID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ArticalContent" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="MasterImage" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ResizeImage" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Member" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="PublishDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Viewed" Nullable="false" />
+    <Property Type="String" Name="Tag" Nullable="true" MaxLength="255" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="String" Name="ArticalCatName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Summery" Nullable="true" MaxLength="255" />
+    <Property Type="Boolean" Name="IsFix" Nullable="true" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="P_vwComment_SearchPaging_Result">
+    <Property Type="Int32" Name="CommentID" Nullable="false" />
+    <Property Type="Int32" Name="Parent" Nullable="true" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Content" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="ComentBy" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="150" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Type" Nullable="true" />
+    <Property Type="Int32" Name="ProductSetID" Nullable="true" />
+    <Property Type="Int32" Name="Viewed" Nullable="true" />
+    <Property Type="Int32" Name="AdminView" Nullable="true" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="String" Name="ProductSetCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductSetName" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="P_vwProduct_SearchPaging_Result">
+    <Property Type="Int32" Name="ProductID" Nullable="false" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductSetID" Nullable="true" />
+    <Property Type="Double" Name="Quantity" Nullable="true" />
+    <Property Type="Int32" Name="SizeID" Nullable="true" />
+    <Property Type="String" Name="ProductSetName" Nullable="true" MaxLength="255" />
+    <Property Type="Binary" Name="Img" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="SizeName" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="ProductGroupID" Nullable="true" />
+    <Property Type="String" Name="GroupName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="Viewed" Nullable="false" />
+    <Property Type="Int32" Name="Available" Nullable="true" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="P_vwProductSet_FindSort_Result">
+    <Property Type="Int32" Name="ProductSetID" Nullable="false" />
+    <Property Type="String" Name="ProductSetCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductSetName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="CategoryID" Nullable="false" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductGroupName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductStyleName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductMaterialName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductTypeName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProviderName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ForGenderName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductGroupID" Nullable="true" />
+    <Property Type="Int32" Name="ProductStyleID" Nullable="true" />
+    <Property Type="Int32" Name="ProductMaterialID" Nullable="true" />
+    <Property Type="Int32" Name="ProductTypeID" Nullable="true" />
+    <Property Type="Int32" Name="Pocket" Nullable="false" />
+    <Property Type="Int32" Name="ProviderID" Nullable="true" />
+    <Property Type="Int32" Name="ForGender" Nullable="true" />
+    <Property Type="Double" Name="Price" Nullable="true" />
+    <Property Type="Double" Name="PriceSaled" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ProductUnit" Nullable="true" />
+    <Property Type="DateTime" Name="DeliveryDate" Nullable="false" />
+    <Property Type="Binary" Name="Img" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ColorID" Nullable="true" />
+    <Property Type="String" Name="ColorName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductDesignID" Nullable="true" />
+    <Property Type="String" Name="ProductDesignName" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="P_vwProductSet_FindSort_NotPaging_Result">
+    <Property Type="Int32" Name="ProductSetID" Nullable="false" />
+    <Property Type="String" Name="ProductSetCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductSetName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="CategoryID" Nullable="false" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductGroupName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductStyleName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductMaterialName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductTypeName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProviderName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ForGenderName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductGroupID" Nullable="true" />
+    <Property Type="Int32" Name="ProductStyleID" Nullable="true" />
+    <Property Type="Int32" Name="ProductMaterialID" Nullable="true" />
+    <Property Type="Int32" Name="ProductTypeID" Nullable="true" />
+    <Property Type="Int32" Name="Pocket" Nullable="false" />
+    <Property Type="Int32" Name="ProviderID" Nullable="true" />
+    <Property Type="Int32" Name="ForGender" Nullable="true" />
+    <Property Type="Double" Name="Price" Nullable="true" />
+    <Property Type="Double" Name="PriceSaled" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ProductUnit" Nullable="true" />
+    <Property Type="DateTime" Name="DeliveryDate" Nullable="false" />
+    <Property Type="Binary" Name="Img" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ColorID" Nullable="true" />
+    <Property Type="String" Name="ColorName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductDesignID" Nullable="true" />
+    <Property Type="String" Name="ProductDesignName" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="P_vwProductSet_FindSort_PriceBeetwen_Result">
+    <Property Type="Int32" Name="ProductSetID" Nullable="false" />
+    <Property Type="String" Name="ProductSetCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductSetName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="CategoryID" Nullable="false" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductGroupName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductStyleName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductMaterialName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductTypeName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProviderName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ForGenderName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductGroupID" Nullable="true" />
+    <Property Type="Int32" Name="ProductStyleID" Nullable="true" />
+    <Property Type="Int32" Name="ProductMaterialID" Nullable="true" />
+    <Property Type="Int32" Name="ProductTypeID" Nullable="true" />
+    <Property Type="Int32" Name="Pocket" Nullable="false" />
+    <Property Type="Int32" Name="ProviderID" Nullable="true" />
+    <Property Type="Int32" Name="ForGender" Nullable="true" />
+    <Property Type="Double" Name="Price" Nullable="true" />
+    <Property Type="Double" Name="PriceSaled" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ProductUnit" Nullable="true" />
+    <Property Type="DateTime" Name="DeliveryDate" Nullable="false" />
+    <Property Type="Binary" Name="Img" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ColorID" Nullable="true" />
+    <Property Type="String" Name="ColorName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductDesignID" Nullable="true" />
+    <Property Type="String" Name="ProductDesignName" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="P_vwProductSet_FindSort_PriceDown_Result">
+    <Property Type="Int32" Name="ProductSetID" Nullable="false" />
+    <Property Type="String" Name="ProductSetCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductSetName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="CategoryID" Nullable="false" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductGroupName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductStyleName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductMaterialName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductTypeName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProviderName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ForGenderName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductGroupID" Nullable="true" />
+    <Property Type="Int32" Name="ProductStyleID" Nullable="true" />
+    <Property Type="Int32" Name="ProductMaterialID" Nullable="true" />
+    <Property Type="Int32" Name="ProductTypeID" Nullable="true" />
+    <Property Type="Int32" Name="Pocket" Nullable="false" />
+    <Property Type="Int32" Name="ProviderID" Nullable="true" />
+    <Property Type="Int32" Name="ForGender" Nullable="true" />
+    <Property Type="Double" Name="Price" Nullable="true" />
+    <Property Type="Double" Name="PriceSaled" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ProductUnit" Nullable="true" />
+    <Property Type="DateTime" Name="DeliveryDate" Nullable="false" />
+    <Property Type="Binary" Name="Img" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ColorID" Nullable="true" />
+    <Property Type="String" Name="ColorName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductDesignID" Nullable="true" />
+    <Property Type="String" Name="ProductDesignName" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="P_vwProductSet_FindSort_PriceUp_Result">
+    <Property Type="Int32" Name="ProductSetID" Nullable="false" />
+    <Property Type="String" Name="ProductSetCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductSetName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="CategoryID" Nullable="false" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductGroupName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductStyleName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductMaterialName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductTypeName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProviderName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ForGenderName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductGroupID" Nullable="true" />
+    <Property Type="Int32" Name="ProductStyleID" Nullable="true" />
+    <Property Type="Int32" Name="ProductMaterialID" Nullable="true" />
+    <Property Type="Int32" Name="ProductTypeID" Nullable="true" />
+    <Property Type="Int32" Name="Pocket" Nullable="false" />
+    <Property Type="Int32" Name="ProviderID" Nullable="true" />
+    <Property Type="Int32" Name="ForGender" Nullable="true" />
+    <Property Type="Double" Name="Price" Nullable="true" />
+    <Property Type="Double" Name="PriceSaled" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ProductUnit" Nullable="true" />
+    <Property Type="DateTime" Name="DeliveryDate" Nullable="false" />
+    <Property Type="Binary" Name="Img" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ColorID" Nullable="true" />
+    <Property Type="String" Name="ColorName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductDesignID" Nullable="true" />
+    <Property Type="String" Name="ProductDesignName" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="P_vwProductSetAllName_SearchPaging_Result">
+    <Property Type="Int32" Name="ProductSetID" Nullable="false" />
+    <Property Type="String" Name="ProductSetCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductSetName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="CategoryID" Nullable="false" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductGroupName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductStyleName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductMaterialName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProductTypeName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ProviderName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ForGenderName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductGroupID" Nullable="true" />
+    <Property Type="Int32" Name="ProductStyleID" Nullable="true" />
+    <Property Type="Int32" Name="ProductMaterialID" Nullable="true" />
+    <Property Type="Int32" Name="ProductTypeID" Nullable="true" />
+    <Property Type="Int32" Name="Pocket" Nullable="false" />
+    <Property Type="Int32" Name="ProviderID" Nullable="true" />
+    <Property Type="Int32" Name="ForGender" Nullable="true" />
+    <Property Type="Double" Name="Price" Nullable="true" />
+    <Property Type="Double" Name="PriceSaled" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ProductUnit" Nullable="true" />
+    <Property Type="DateTime" Name="DeliveryDate" Nullable="false" />
+    <Property Type="Binary" Name="Img" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ColorID" Nullable="true" />
+    <Property Type="String" Name="ColorName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="ProductDesignID" Nullable="true" />
+    <Property Type="String" Name="ProductDesignName" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="P_vwShoppingOrder_Member_SearchPaging_Result">
+    <Property Type="Int32" Name="MemberID" Nullable="false" />
+    <Property Type="Int32" Name="MemberGroupID" Nullable="false" />
+    <Property Type="String" Name="AcountLogin" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="OrderID" Nullable="false" />
+    <Property Type="String" Name="OrderCode" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="OrderDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="RequiredDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ShippedDate" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Total" Nullable="true" />
+    <Property Type="String" Name="ShipAddress" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="ShipCity" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ShipCountry" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="ManageBy" Nullable="true" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="P_vwShoppingOrder_User_SearchPaging_Result">
+    <Property Type="Int32" Name="MemberID" Nullable="false" />
+    <Property Type="Int32" Name="MemberGroupID" Nullable="false" />
+    <Property Type="String" Name="AcountLogin" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="OrderID" Nullable="false" />
+    <Property Type="String" Name="OrderCode" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="OrderDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="RequiredDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ShippedDate" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Total" Nullable="true" />
+    <Property Type="String" Name="ShipAddress" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="ShipCity" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ShipCountry" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="ManageBy" Nullable="true" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_TTINH_SPHAM_Result">
+    <Property Type="Int32" Name="NODE_PARENT" Nullable="true" />
+    <Property Type="String" Name="NODE" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="NODE_NAME" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spCategory_Paging_Result">
+    <Property Type="Int32" Name="CategoryID" Nullable="false" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spCategory_Search_Paging_Result">
+    <Property Type="Int32" Name="CategoryID" Nullable="false" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spColor_Paging_Result">
+    <Property Type="Int32" Name="ColorID" Nullable="false" />
+    <Property Type="String" Name="Code" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ColorName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ColorIcon" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spProductDesign_Paging_Result">
+    <Property Type="Int32" Name="ProductDesignID" Nullable="false" />
+    <Property Type="String" Name="ProductDesignName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="CategoryID" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spProductGroup_Paging_Result">
+    <Property Type="Int32" Name="ProductGroupID" Nullable="false" />
+    <Property Type="Int32" Name="GroupParrentID" Nullable="true" />
+    <Property Type="String" Name="GroupName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="NoSymbolName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="CategoryID" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spProductMaterial_Paging_Result">
+    <Property Type="Int32" Name="ProductMaterialID" Nullable="false" />
+    <Property Type="String" Name="MaterialName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="CategoryID" Nullable="true" />
+    <Property Type="String" Name="Desciption" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spProductSize_Paging_Result">
+    <Property Type="Int32" Name="SizeID" Nullable="false" />
+    <Property Type="String" Name="Code" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="CategoryID" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spProductStyle_Paging_Result">
+    <Property Type="Int32" Name="ProductStyleID" Nullable="false" />
+    <Property Type="String" Name="StyleName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="CategoryID" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spProductType_Paging_Result">
+    <Property Type="Int32" Name="ProductTypeID" Nullable="false" />
+    <Property Type="String" Name="TypeName" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="CategoryID" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spProvider_Paging_Result">
+    <Property Type="Int32" Name="ProviderID" Nullable="false" />
+    <Property Type="String" Name="ProviderName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Logo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+    <Property Type="Int64" Name="RowNumber" Nullable="true" />
+  </ComplexType>
+</Schema>

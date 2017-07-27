@@ -1,0 +1,14 @@
+D:\Working\Project\SmartCMS\SmartCMS.DAL\bin\Debug\SmartCMS.DAL.dll.config
+D:\Working\Project\SmartCMS\SmartCMS.DAL\bin\Debug\SmartCMS.DAL.dll
+D:\Working\Project\SmartCMS\SmartCMS.DAL\bin\Debug\SmartCMS.DAL.pdb
+D:\Working\Project\SmartCMS\SmartCMS.DAL\bin\Debug\EntityFramework.dll
+D:\Working\Project\SmartCMS\SmartCMS.DAL\bin\Debug\SmartCMS.Utilities.dll
+D:\Working\Project\SmartCMS\SmartCMS.DAL\bin\Debug\itextsharp.dll
+D:\Working\Project\SmartCMS\SmartCMS.DAL\bin\Debug\SmartCMS.Utilities.pdb
+D:\Working\Project\SmartCMS\SmartCMS.DAL\bin\Debug\EntityFramework.xml
+D:\Working\Project\SmartCMS\Build\SmartCMS.DAL.dll.config
+D:\Working\Project\SmartCMS\Build\SmartCMS.DAL.dll
+D:\Working\Project\SmartCMS\Build\SmartCMS.DAL.pdb
+D:\Working\Project\SmartCMS\SmartCMS.DAL\obj\Debug\SmartCMS.DAL.csprojResolveAssemblyReference.cache
+D:\Working\Project\SmartCMS\SmartCMS.DAL\obj\Debug\SmartCMS.DAL.dll
+D:\Working\Project\SmartCMS\SmartCMS.DAL\obj\Debug\SmartCMS.DAL.pdb

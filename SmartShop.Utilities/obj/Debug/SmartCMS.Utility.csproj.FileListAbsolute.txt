@@ -1,0 +1,5 @@
+D:\Working\Project\SmartCMS\SmartCMS.Utility\obj\Debug\SmartCMS.Utility.csprojResolveAssemblyReference.cache
+D:\Working\Project\SmartCMS\SmartCMS.Utility\bin\Debug\SmartCMS.Utility.dll
+D:\Working\Project\SmartCMS\SmartCMS.Utility\bin\Debug\SmartCMS.Utility.pdb
+D:\Working\Project\SmartCMS\SmartCMS.Utility\obj\Debug\SmartCMS.Utility.dll
+D:\Working\Project\SmartCMS\SmartCMS.Utility\obj\Debug\SmartCMS.Utility.pdb

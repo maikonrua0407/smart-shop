@@ -1,0 +1,11 @@
+D:\Working\Project\SmartShop\SmartShop.DAL\bin\Release\SmartShop.DAL.dll.config
+D:\Working\Project\SmartShop\SmartShop.DAL\bin\Release\SmartShop.DAL.dll
+D:\Working\Project\SmartShop\SmartShop.DAL\bin\Release\SmartShop.DAL.pdb
+D:\Working\Project\SmartShop\SmartShop.DAL\bin\Release\EntityFramework.dll
+D:\Working\Project\SmartShop\SmartShop.DAL\bin\Release\SmartShop.Utilities.dll
+D:\Working\Project\SmartShop\SmartShop.DAL\bin\Release\itextsharp.dll
+D:\Working\Project\SmartShop\SmartShop.DAL\bin\Release\SmartShop.Utilities.pdb
+D:\Working\Project\SmartShop\SmartShop.DAL\bin\Release\EntityFramework.xml
+D:\Working\Project\SmartShop\SmartShop.DAL\obj\Release\SmartShop.DAL.csprojResolveAssemblyReference.cache
+D:\Working\Project\SmartShop\SmartShop.DAL\obj\Release\SmartShop.DAL.dll
+D:\Working\Project\SmartShop\SmartShop.DAL\obj\Release\SmartShop.DAL.pdb

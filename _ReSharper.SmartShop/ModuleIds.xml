@@ -1,0 +1,6 @@
+<Modules>
+  <Module PersistentId="92744C1C-0566-481D-8FDF-81E6A05F7E24" ModuleId="SmartShop.UI" />
+  <Module PersistentId="91856094-3362-4FED-9A71-0E7A2D0B737F" ModuleId="SmartShop.Utilities" />
+  <Module PersistentId="CA2450A7-42F5-4EDB-965C-B3E10AF2BC73" ModuleId="SmartShop.DAL" />
+  <Module PersistentId="0387802E-1402-43C3-9083-DABF64B0266E" ModuleId="SmartShop.Admin" />
+</Modules>
